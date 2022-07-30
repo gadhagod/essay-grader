@@ -29,7 +29,7 @@ app.use("/static", express.static(__dirname + "/static"));
     app.get("/view/:essayId", async (req, res) => {
         try {
             let essayData = await Essay.findOne({ _id: req.params.essayId }) as object;
-            if (essayData) res.render("viewOne.ejs", (essayData));
+            if (essayData) res.render("viewOne.ejs", essayData);
             else res.sendStatus(404);
         } catch (err) {
             res.sendStatus((err as any).kind === "ObjectId" ? 404 : 500)

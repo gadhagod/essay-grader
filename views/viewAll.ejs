@@ -30,7 +30,8 @@
                                 <%= essays[i].creationTime.getMonth() %>/<%= essays[i].creationTime.getDate() %>/<%= essays[i].creationTime.getFullYear().toString().slice(-2) %>
                             </td>
                             <td>
-                                <%= essays[i].creationTime.getHours() %>:<%= essays[i].creationTime.getMinutes() %>
+                                <%= essays[i].creationTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }) %>
+                                <!--<%= essays[i].creationTime.getHours() %>:<%= essays[i].creationTime.getMinutes() %>-->
                             </td>
                             <td>
                                 <a href="/view/<%= essays[i]._id %>">
