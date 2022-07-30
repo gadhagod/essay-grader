@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <%- include(`${base}/views/partials/head.ejs`, { title: "Dashboard" }) %>
+    </head>
+    <body>
+        <%- include(`${base}/views/partials/nav.ejs`) %>
+        <h1 class="text-center mt-5">Teacher Dashboard</h1>
+        <center>
+            <% if (essays.length === 0) { %>
+                <strong class="text-center">No essays submitted</strong>
+            <% } else { %>
+                <table class="table mt-4 mx-5">
+                    <tr class="table-head">
+                        <th>Student</th>
+                        <th>Grade</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <% for(let i = essays.length - 1; i >= 0; i--) { %>
+                        <tr id="essay-row-<%= essays[i]._id %>">
+                            <td>
+                                <%= essays[i].name %>
+                            </td>
+                            <td>
+                                <%= essays[i].grade.letterGrade %>
+                            </td>
+                            <td>
+                                <%= essays[i].creationTime.getMonth() %>/<%= essays[i].creationTime.getDate() %>/<%= essays[i].creationTime.getFullYear().toString().slice(-2) %>
+                            </td>
+                            <td>
+                                <%= essays[i].creationTime.getHours() %>:<%= essays[i].creationTime.getMinutes() %>
+                            </td>
+                            <td>
+                                <a href="/view/<%= essays[i]._id %>">
+                                    <button class="btn btn-primary">View</button>
+                                </a>   
+                            </td>
+                            <td>
+                                <button id="rm-button-<%= essays[i]._id %>" onclick="deleteEssay('<%= essays[i]._id %>')" class="btn btn-danger">Remove</button>
+                            </td>
+                        </tr>
+                    <% } %>
+                </table>
+            <% } %>
+        </center>
+    </body>    
+    <script>
+        const xhr = new XMLHttpRequest();
+
+        function deleteEssay(essayId) {
+            console.log(essayId)
+            fetch(`/delete/${essayId}`, {
+                method: "DELETE",
+            }).then((res) => {
+                console.log(res)
+                document.querySelector(`#essay-row-${essayId}`).remove();
+            }).catch((err) => {
+                console.log(err)
+                alert("An error occurred")
+            });
+        }
+    </script>
+</html>

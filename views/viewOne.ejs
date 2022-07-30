@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <head>
+            <%- include(`${base}/views/partials/head.ejs`, { title: `${name.slice(0, name.indexOf(" "))}'s Essay` }) %>
+        </head>
+    </head>
+    <body>
+        <%- include(`${base}/views/partials/nav.ejs`) %>
+        <div class="mx-4">
+            <br>
+            <h1 class="text-center"><%= name %>'s Essay</h1>
+            <h5 class="text-center">Grade: <b><%= grade.percentGrade %>% (<%= grade.letterGrade %>)</b></h5>
+            <br>
+            <blockquote>
+                <%= essayBody %>
+            </blockquote>
+            <h2>Problems:</h2>
+            <ul>
+            <% if(!grade.problems.hasValidLength){ %>
+                <li><b><span class="text-danger">-50%</span></b> Word count requirement of 500 - 1000 unfulfilled. Your essay has <%= grade.data.essayWords.length %> words.</li>
+            <% } %>
+            
+            <% if(grade.problems.noNos.length){ %>
+                <li><b><span class="text-danger">-<%= grade.problems.noNos.length %>%</span></b> The following no-nos were are in your essay:</li>
+                <ul>
+                    <% for(let i = 0; i < grade.problems.noNos.length; i++) { %>
+                        <li><%= grade.data.essayWords[grade.problems.noNos[i]] %></li>
+                    <% } %>
+                </ul>
+            <% } %>
+            
+            <% if(grade.problems.spellingErrors.length){ %>
+                <li><b><span class="text-danger">-<%= grade.problems.spellingErrors.length %>%</span></b> There are <%= grade.problems.spellingErrors.length %> misspelled words in your essay:</li>
+                <ul>
+                    <% for(let i = 0; i < grade.problems.spellingErrors.length; i++) { %>
+                        <li><%= grade.data.essayWords[grade.problems.spellingErrors[i]] %></li>
+                    <% } %>
+                </ul>
+            <% } %>
+            
+            <% if(grade.problems.repeatedFirstWords.length){ %>
+                <li><b><span class="text-danger">-<%= 3 * grade.problems.repeatedFirstWords.length %>%</span></b> The sentence-starting words following words are repeated:</li>
+                <ul>
+                    <% for(let i = 0; i < grade.problems.repeatedFirstWords.length; i++) { %>
+                        <li><%= grade.data.firstWordsInSentences[grade.problems.repeatedFirstWords[i][0]] %></li>
+                    <% } %>
+                </ul>
+            <% } %>
+            
+            <% if(grade.problems.terminatingPrepositions.length){ %>
+                <li><b><span class="text-danger">-<%= 5 * grade.problems.terminatingPrepositions.length %>%</span></b> The prepositions end sentences:</li>
+                <ul>
+                    <% for(let i = 0; i < grade.problems.terminatingPrepositions.length; i++) { %>
+                        <li><%= grade.data.lastWordsInSentences[grade.problems.terminatingPrepositions[i]] %></li>
+                    <% } %>
+                </ul>
+            <% } %>
+            </ul>
+            
+            <!--
+            <p id="problems-object" style="display:none"><%# JSON.stringify(problems) %></p>
+            <script>
+                let problems = JSON.parse(document.querySelector("#problems-object").innerHTML)
+                console.log(problems)
+            </script>
+            -->
+        </div>
+    </body>
+</html>
