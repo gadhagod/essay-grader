@@ -16,6 +16,8 @@ app.use("/static", express.static(__dirname + "/static"));
 (async () => {
     await mongoose.connect('mongodb://localhost:27017/essays');
 
+    mongoose.connection.db.dropDatabase();
+
     app.get("/", async (_req, res) => {
         res.render("viewAll.ejs", { essays: await Essay.find() });
     });
@@ -42,7 +44,7 @@ app.use("/static", express.static(__dirname + "/static"));
         let grade = (new Grader(req.body.essayBody)).getGrade()
         let essayData = Object.assign(req.body, { creationTime: new Date(), grade: grade });
         let essay = new Essay(essayData);
-        essay.save();
+        await essay.save();
         res.redirect(`view/${essay._id}`);
     });
 

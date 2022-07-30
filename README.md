@@ -22,7 +22,6 @@
 
 ## TODO
 - [ ] Highlight errors on view page
-- [ ] Styling
 - [ ] Make misspelled words list take less space
 - [ ] Add back button to view page
 - [ ] Fix spelling mistake identification bugs
