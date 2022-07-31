@@ -1,5 +1,7 @@
 .table {
     width: 95%;
+    border-right: 1px solid lightgray;
+    border-left: 1px solid lightgray;
 }
 .table-head {
     background-color: lightgray;
