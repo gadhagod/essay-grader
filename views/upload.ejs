@@ -4,8 +4,7 @@
     </head>
     <body>
         <%- include(`${base}/views/partials/nav.ejs`) %>
-        <br>
-        <h1 class="text-center">Essay Submission</h1>
+        <%- include(`${base}/views/partials/heading.ejs`, { title: `Essay Submission` }) %>
         <form class="mx-5" action="/upload" method="post">
             <label for="name-input"><b>Name</b></label>
             <input id="name-input" class="form-control" name="name" placeholder="Enter name" required>
@@ -13,7 +12,7 @@
                 <b>Essay</b> 
                 <input type="file" id="essay-body-file" class="btn btn-sm">
             </label>
-            <textarea id="essay-body-input" class="form-control" name="essayBody" rows="10" required placeholder="Or paste essay
+            <textarea id="essay-body-input" class="form-control" name="rawEssayBody" rows="10" required placeholder="Or paste essay
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl pretium fusce id velit ut tortor pretium viverra suspendisse. Tellus integer feugiat scelerisque varius morbi enim nunc. Sollicitudin aliquam ultrices sagittis orci. Ac turpis egestas sed tempus urna et pharetra. Ut faucibus pulvinar elementum integer enim neque volutpat ac tincidunt. Diam maecenas sed enim ut. Mattis aliquam faucibus purus in massa tempor nec feugiat. Interdum velit euismod in pellentesque. Faucibus a pellentesque sit amet porttitor eget dolor. Pretium fusce id velit ut. Id aliquet risus feugiat in ante metus. Mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare massa eget. Vel pretium lectus quam id leo in vitae turpis massa. Amet venenatis urna cursus eget nunc scelerisque viverra. Nibh nisl condimentum id venenatis."></textarea>
             

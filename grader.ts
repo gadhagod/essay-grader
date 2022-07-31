@@ -3,16 +3,18 @@ import dictionaryWords from "./util/wordList";
 export default class Grader {
     private static readonly NONOS = ["very", "really", "got", "get", "getting", "gotten"];
     private static readonly PREPOSITIONS = ["with", "at", "by", "to", "in", "for", "from", "of", "on"];
-    private readonly essayBody: string;
+    private readonly rawEssayBody: string;
+    private readonly trimmedEssayBody: string;
     private readonly essayWords: string[];
     private readonly firstWordsInSentences: string[];
     private readonly lastWordsInSentences: string[];
     
 
-    constructor(essayBody: string) {
-        this.essayBody = essayBody.toLowerCase().replace(/\(|\)/g, "").replace(/(\r\n|\n|\r)/gm, "").replace("?", ".").replace("!", "");
-        this.essayWords = Grader.extractWords(this.essayBody);
-        [this.firstWordsInSentences, this.lastWordsInSentences] = Grader.extractWordsAroundPeriods(this.essayBody);
+    constructor(rawEssayBody: string) {
+        this.rawEssayBody = rawEssayBody;
+        this.trimmedEssayBody = rawEssayBody.toLowerCase().replace(/\(|\)/g, "").replace(/(\r\n|\n|\r)/gm, "").replace("?", ".").replace("!", "");
+        this.essayWords = Grader.extractWords(this.trimmedEssayBody);
+        [this.firstWordsInSentences, this.lastWordsInSentences] = Grader.extractWordsAroundPeriods(this.trimmedEssayBody);
     }
 
     private getProblems() {
@@ -62,17 +64,17 @@ export default class Grader {
         return problems;
     }
 
-    private static extractWords = (essayBody: string) => essayBody.match(/\b(\w+)'?(\w+)?\b/g) as string[];
+    private static extractWords = (trimmedEssayBody: string) => trimmedEssayBody.match(/\b(\w+)'?(\w+)?\b/g) as string[];
     private static isWord = (word: string) => dictionaryWords.includes(word);
-    private static extractWordsAroundPeriods(essayBody: string) {
+    private static extractWordsAroundPeriods(trimmedEssayBody: string) {
         let lastWordsInSentences: string[] = [];
         let firstWordsInSentences: string[] = [];
-        let essay = essayBody;
+        let essay = trimmedEssayBody;
         let j = 1;
         // .
-        for (let i = essay.indexOf("."); j <= essayBody.split(".").length - 1; i = essay.indexOf(".")) {
+        for (let i = essay.indexOf("."); j <= trimmedEssayBody.split(".").length - 1; i = essay.indexOf(".")) {
             let firstSentence = essay.substring(0, essay.indexOf("."));
-            let firstWordInSentence = firstSentence.substring(0, firstSentence.indexOf(" "));
+            let firstWordInSentence = firstSentence.substring(0, firstSentence.indexOf(" ")); // TODO: break with new line
             let lastWordInFirstSentence = firstSentence.substring(firstSentence.lastIndexOf(" ")+1);
             firstWordsInSentences.push(firstWordInSentence);
             lastWordsInSentences.push(lastWordInFirstSentence);

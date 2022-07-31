@@ -1,18 +1,17 @@
 <html>
     <head>
         <head>
-            <%- include(`${base}/views/partials/head.ejs`, { title: `${name.slice(0, name.indexOf(" "))}'s Essay` }) %>
+            <%- include(`${base}/views/partials/head.ejs`, { title: `${name[0].toUpperCase() + name.slice(1, name.indexOf(" "))}'s Essay` }) %>
         </head>
     </head>
     <body>
         <%- include(`${base}/views/partials/nav.ejs`) %>
+        <%- include(`${base}/views/partials/heading.ejs`, { title: `${toTitleCase(name)}'s Essay` }) %>
         <div class="mx-4">
-            <br>
-            <h1 class="text-center"><%= name %>'s Essay</h1>
             <h5 class="text-center">Grade: <b><%= grade.percentGrade %>% (<%= grade.letterGrade %>)</b></h5>
             <br>
             <blockquote>
-                <%= essayBody %>
+                <%- rawEssayBody.replace("\n", "<br>").replace("\r", "<br>") %>
             </blockquote>
             <h2>Problems:</h2>
             <ul>

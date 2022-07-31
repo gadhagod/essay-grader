@@ -1,0 +1,33 @@
+.table {
+    width: 95%;
+    border-right: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+}
+.table-head {
+    background-color: lightgray;
+}
+.navbar-text {
+    color: black;
+}
+blockquote {
+    font-size: small;
+    color: gray;
+    border-left: 3px solid gray;
+    padding-left: 5px;
+}
+input[type="file"] {
+    color: transparent;
+}
+#dark-mode-btn {
+    float: right;
+}
+.bi {
+    color: black;
+    font-size: 2rem;
+}
+.navbar-brand {
+    cursor: pointer;
+}
+#dark-mode-btn {
+    border: 1px solid lightgray;
+}
