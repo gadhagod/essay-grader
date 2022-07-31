@@ -27,10 +27,6 @@ app.use("/static", express.static(__dirname + "/static"));
     app.get("/view/:essayId", async (req, res) => {
         try {
             let essayData = await Essay.findOne({ _id: req.params.essayId }) as object;
-            console.log(Object.assign(
-                essayData, 
-                { toTitleCase: (str: string) => str.toLowerCase().split(" ").map((word) => (word.charAt(0).toUpperCase() + word.slice(1))).join(" ") }
-            ))
             if (essayData) res.render("viewOne.ejs", Object.assign(
                 essayData, 
                 { toTitleCase: (str: string) => str.toLowerCase().split(" ").map((word) => (word.charAt(0).toUpperCase() + word.slice(1))).join(" ") }

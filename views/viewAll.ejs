@@ -51,11 +51,9 @@
         const xhr = new XMLHttpRequest();
 
         function deleteEssay(essayId) {
-            console.log(essayId)
             fetch(`/delete/${essayId}`, {
                 method: "DELETE",
             }).then((res) => {
-                console.log(res)
                 document.querySelector(`#essay-row-${essayId}`).remove();
             }).catch((err) => {
                 console.log(err)
