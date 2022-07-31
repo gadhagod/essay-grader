@@ -16,6 +16,10 @@ app.use("/static", express.static(__dirname + "/static"));
 (async () => {
     await mongoose.connect('mongodb://localhost:27017/essays');
 
+    app.get("/", async (_req, res) => {
+        res.render("viewAll.ejs", { essays: await Essay.find() });
+    });
+
     app.get("/view", async (_req, res) => {
         res.render("viewAll.ejs", { essays: await Essay.find() });
     });
