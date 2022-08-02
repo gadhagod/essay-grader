@@ -21,8 +21,6 @@
 > Try to accomplish at least two of these mini-parts.
 
 ## TODO
-- [ ] Make student names title case
+- [ ] Make student names title case and queries case-insensitive
 - [ ] Add back button to view page
-- [ ] Move scripts tag to bottom of EJS pages (using partials)
-- [ ] Highlight errors on view page
-- [ ] Fix spelling mistake identification bugs
+- [ ] Fix spelling mistake identification bugs (numbers, etc.)
