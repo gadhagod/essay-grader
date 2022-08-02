@@ -77,7 +77,7 @@ class Themes {
     }
 }
 
-var theme = new Themes(parseInt(localStorage.getItem("lightTheme")));
+var theme = new Themes(parseInt(localStorage.getItem("lightTheme")) || 1);
 document.querySelector("#dark-mode-btn").addEventListener("click", () => { theme.toggle() })
 
 document.querySelector(".navbar-brand").addEventListener("click", () => { window.location.href = "/" });
