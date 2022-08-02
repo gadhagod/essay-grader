@@ -5,11 +5,10 @@
     <body>
         <%- include(`${base}/views/partials/nav.ejs`) %>
         <%- include(`${base}/views/partials/heading.ejs`, { title: "Teacher Dashboard" }) %>
-        <center>
-            <% if (essays.length === 0) { %>
-                <strong class="text-center" id="no-essays-submitted">No essays submitted</strong>
-            <% } else { %>
-                <table class="table mt-4 mx-5">
+        <center class="mt-5">
+            <strong class="text-center text-warning" id="no-essays-submitted" style="display: <%= essays.length === 0 ? "" : "none" %>">No essays submitted.</strong>
+            <% if (essays.length !== 0) { %>
+                <table id="teacher-essay-list" class="table mt-5 mx-5">
                     <tr class="table-head">
                         <th><p>Student</p></th>
                         <th><p>Grade</p></th>
@@ -30,7 +29,7 @@
                                 <p><%= essays[i].creationTime.getMonth() %>/<%= essays[i].creationTime.getDate() %>/<%= essays[i].creationTime.getFullYear().toString().slice(-2) %></p>
                             </td>
                             <td>
-                                <p><%= essays[i].creationTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }) %></p>
+                                <p><%= essays[i].creationTime.toLocaleString("en-US", { hour: "numeric", minute: "numeric", hour12: true }) %></p>
                             </td>
                             <td>
                                 <a href="/view/<%= essays[i]._id %>">
@@ -46,7 +45,7 @@
             <% } %>
         </center>
     </body>
-    <script src="/static/js/index.js"></script>
+    <%- include(`${base}/views/partials/scripts.ejs`) %>
     <script>
         const xhr = new XMLHttpRequest();
 
@@ -55,6 +54,10 @@
                 method: "DELETE",
             }).then((res) => {
                 document.querySelector(`#essay-row-${essayId}`).remove();
+                if (document.querySelectorAll("tr").length === 1) {
+                    document.querySelector("table").remove();
+                    document.querySelector("#no-essays-submitted").style.display = "";
+                }
             }).catch((err) => {
                 console.log(err)
                 alert("An error occurred")

@@ -21,7 +21,8 @@
 > Try to accomplish at least two of these mini-parts.
 
 ## TODO
-- [ ] Highlight errors on view page
-- [ ] Make misspelled words list take less space
+- [ ] Make student names title case
 - [ ] Add back button to view page
+- [ ] Move scripts tag to bottom of EJS pages (using partials)
+- [ ] Highlight errors on view page
 - [ ] Fix spelling mistake identification bugs

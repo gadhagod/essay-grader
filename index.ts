@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import bodyParser from "body-parser";
 import Grader from "./grader";
 import { Essay } from "./models";
+import api from "./api"
 
 const app = express();
 const port = 2020;
@@ -17,11 +18,15 @@ app.use("/static", express.static(__dirname + "/static"));
     await mongoose.connect('mongodb://localhost:27017/essays');
 
     app.get("/", async (_req, res) => {
-        res.render("viewAll.ejs", { essays: await Essay.find() });
+        res.render("dashboard/teacher.ejs", { essays: await Essay.find() });
     });
 
-    app.get("/view", async (_req, res) => {
-        res.render("viewAll.ejs", { essays: await Essay.find() });
+    app.get("/dashboard/student", async (_req, res) => {
+        res.render("dashboard/student.ejs");
+    });
+
+    app.get("/dashboard/teacher", async (_req, res) => {
+        res.render("dashboard/teacher.ejs", { essays: await Essay.find() });
     });
 
     app.get("/view/:essayId", async (req, res) => {
@@ -53,6 +58,13 @@ app.use("/static", express.static(__dirname + "/static"));
         await Essay.deleteOne({_id: req.params.essayId});
         res.sendStatus(200);
     });
+
+    app.delete("/delete/:essayId", async (req, res) => {
+        await Essay.deleteOne({_id: req.params.essayId});
+        res.sendStatus(200);
+    });
     
+    app.use("/api", api);
+
     app.listen(port, () => { console.log(`App listening on port ${port}`) });
 })();

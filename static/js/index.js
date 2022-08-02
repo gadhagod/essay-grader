@@ -1,4 +1,20 @@
-  class Themes {
+class ErrorIndicator {
+    #errorP;
+    constructor(indicatorElem) {
+        this.#errorP = indicatorElem || document.querySelector("#error-indicator");
+    }
+    setText(errorMsg) {
+        this.#errorP.innerText = errorMsg;
+    }
+    show() {
+        this.#errorP.style.display = "";
+    }
+    hide() {
+        this.#errorP.style.display = "none";
+    }
+}
+
+class Themes {
     #lightTheme;
     #toggleButton;
 
@@ -33,6 +49,10 @@
         });
         this.#toggleButton.classList.remove("bi-sun");
         this.#toggleButton.classList.add("bi-moon");
+        if (document.querySelector("#name-input-card")) {
+            document.querySelector("#name-input-card").classList.remove("bg-secondary");
+        }
+        document.querySelector(".dropdown-menu").classList.remove("bg-secondary");
         localStorage.setItem("lightTheme", 1);
     }
 
@@ -49,16 +69,15 @@
         });
         this.#toggleButton.classList.remove("bi-moon");
         this.#toggleButton.classList.add("bi-sun");
+        if (document.querySelector("#name-input-card")) {
+            document.querySelector("#name-input-card").classList.add("bg-secondary");
+        }
+        document.querySelector(".dropdown-menu").classList.add("bg-secondary");
         localStorage.setItem("lightTheme", 0);
     }
 }
 
 var theme = new Themes(parseInt(localStorage.getItem("lightTheme")));
+document.querySelector("#dark-mode-btn").addEventListener("click", () => { theme.toggle() })
 
-document.querySelector(".navbar-brand").addEventListener("click", () => {
-    window.location.href= "/";
-});
-
-document.querySelector("#dark-mode-btn").addEventListener("click", () => {
-    theme.toggle();
-})
+document.querySelector(".navbar-brand").addEventListener("click", () => { window.location.href = "/" });

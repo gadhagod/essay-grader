@@ -1,7 +1,16 @@
-.table {
+#teacher-essay-list {
     width: 95%;
-    border-right: 1px solid lightgray;
-    border-left: 1px solid lightgray;
+}
+
+#student-essay-list > tr:not(:first-child) {
+    border: 1px solid lightgray;
+}
+#student-essay-list {
+    width: 50%;
+}
+.table {
+    /*border-right: 1px solid lightgray;*/
+    border: 1px solid lightgray;
 }
 .table-head {
     background-color: lightgray;
@@ -21,7 +30,7 @@ input[type="file"] {
 #dark-mode-btn {
     float: right;
 }
-.bi {
+.bi-moon, .bi-sun {
     color: black;
     font-size: 2rem;
 }
@@ -30,4 +39,7 @@ input[type="file"] {
 }
 #dark-mode-btn {
     border: 1px solid lightgray;
+}
+#student-dshbrd-form {
+    width: 30%;
 }

@@ -1,4 +1,18 @@
-h2, .navbar-text, #no-essays-submitted, .h1, .nav, h1, p, label, li, h5 {
+#teacher-essay-list {
+    width: 95%;
+}
+
+#student-essay-list > tr:not(:first-child) {
+    border: 1px solid lightgray;
+}
+#student-essay-list {
+    width: 50%;
+}
+.table {
+    /*border-right: 1px solid lightgray;*/
+    border: 1px solid lightgray;
+}
+h2, .navbar-text, #no-essays-submitted, .h1, .nav, h1, p, label, li, h5, .dropdown-item {
     color: white;
 }
 blockquote {
@@ -16,17 +30,13 @@ input[type="file"] {
 .navbar {
     background-color: rgb(95, 95, 95);
 }
-.table {
-    width: 95%;
-    border: 1px solid lightgray;
-}
 .table-head {
     color: gray !important;
 }
 #dark-mode-btn {
     float: right;
 }
-.bi {
+.bi-moon, .bi-sun {
     color: white;
     font-size: 2rem;
 }
@@ -38,4 +48,16 @@ input[type="file"] {
 }
 #dark-mode-btn {
     border: 1px solid gray;
+}
+#student-dshbrd-form {
+    width: 30%;
+}
+.dropdown-item:hover {
+    color: black;
+}
+.navbar-brand:hover {
+    color: white;
+}
+.nav-item > a:hover {
+    color: white;
 }

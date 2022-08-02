@@ -7,28 +7,42 @@
         <%- include(`${base}/views/partials/heading.ejs`, { title: `Essay Submission` }) %>
         <form class="mx-5" action="/upload" method="post">
             <label for="name-input"><b>Name</b></label>
-            <input id="name-input" class="form-control" name="name" placeholder="Enter name" required>
+            <input id="name-input" class="form-control" name="name" placeholder="Enter name">
             <label class="mt-3" for="essay-body-input">
                 <b>Essay</b> 
                 <input type="file" id="essay-body-file" class="btn btn-sm">
             </label>
-            <textarea id="essay-body-input" class="form-control" name="rawEssayBody" rows="10" required placeholder="Or paste essay
+            <textarea id="essay-body-input" class="form-control" name="rawEssayBody" rows="10" value="jlk" placeholder="Or paste essay
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl pretium fusce id velit ut tortor pretium viverra suspendisse. Tellus integer feugiat scelerisque varius morbi enim nunc. Sollicitudin aliquam ultrices sagittis orci. Ac turpis egestas sed tempus urna et pharetra. Ut faucibus pulvinar elementum integer enim neque volutpat ac tincidunt. Diam maecenas sed enim ut. Mattis aliquam faucibus purus in massa tempor nec feugiat. Interdum velit euismod in pellentesque. Faucibus a pellentesque sit amet porttitor eget dolor. Pretium fusce id velit ut. Id aliquet risus feugiat in ante metus. Mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare massa eget. Vel pretium lectus quam id leo in vitae turpis massa. Amet venenatis urna cursus eget nunc scelerisque viverra. Nibh nisl condimentum id venenatis."></textarea>
-            
-            <div class="text-center">
-                <input class="btn btn-primary mt-4" type="submit" value="Submit">
-            </div>
         </form>
+        <div class="text-center">
+            <button class="btn btn-primary mt-4" id="submit-btn">Submit</button>
+        </div>
+        <center class="mt-5">
+            <strong id="error-indicator" class="text-center text-danger mt-5 h5"></strong>
+        </center>
     </body>
-    <script src="/static/js/index.js"></script>
+    <%- include(`${base}/views/partials/scripts.ejs`) %>
     <script>
-        document.querySelector("#essay-body-file").addEventListener('change', function() { 
+        let errorIndicator = new ErrorIndicator();
+        let essayBodyFile = document.querySelector("#essay-body-file");
+
+        essayBodyFile.addEventListener("change", () => { 
             var fr = new FileReader();
             fr.onload = () => {
                 document.querySelector("#essay-body-input").value = fr.result
             }
-            fr.readAsText(this.files[0]);
-        })
+            fr.readAsText(essayBodyFile.files[0]);
+        });
+
+        document.querySelector("#submit-btn").addEventListener("click", () => {
+            localStorage.setItem("studentName", document.querySelector("#name-input").value);
+            if (!document.querySelector("input").value.trim()) return errorIndicator.setText("Please enter your name.");
+            if (!document.querySelector("textarea").value.trim()) return errorIndicator.setText("Please enter your essay.");
+            document.querySelector("form").submit();
+        });
+
+        document.querySelector("#name-input").value = localStorage.getItem("studentName") ?? "";
     </script>
 </html>
