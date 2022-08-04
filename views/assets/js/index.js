@@ -38,7 +38,7 @@ class Themes {
 
     #setToLight() {
         this.#lightTheme = true;
-        document.querySelector("#dark-light-link").href = "/static/css/light.css";
+        document.querySelector("#dark-light-link").href = "/assets/css/light.css";
         document.body.removeAttribute("class");
         document.querySelector(".navbar").classList.add("bg-light");
         if (document.querySelector(".table-head")) {
@@ -58,7 +58,7 @@ class Themes {
 
     #setToDark() {
         this.#lightTheme = false;
-        document.querySelector("#dark-light-link").href = "/static/css/dark.css";
+        document.querySelector("#dark-light-link").href = "/assets/css/dark.css";
         document.body.setAttribute("class", "bg-dark");
         document.querySelector(".navbar").classList.remove("bg-light");
         if (document.querySelector(".table-head")) {

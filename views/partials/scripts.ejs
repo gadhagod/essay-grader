@@ -1,8 +1,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/static/js/index.js"></script>
+<script src="/assets/js/index.js"></script>
 <% if (typeof additionalFiles == "object") { %>
     <% for(let i = 0; i < additionalFiles.length; i++) { %>
-        <script src="/static/js/<%= additionalFiles[i] %>"></script>
+        <script src="/assets/js/<%= additionalFiles[i] %>"></script>
     <% } %>
 <% } %>

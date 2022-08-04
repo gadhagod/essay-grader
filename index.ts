@@ -12,7 +12,7 @@ const port = 2020;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.set("view engine", "ejs");
-app.use("/static", express.static(__dirname + "/static"));
+app.use("/assets", express.static(__dirname + "/views/assets"));
 
 (async () => {
     await mongoose.connect('mongodb://localhost:27017/essays');
