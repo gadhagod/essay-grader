@@ -43,3 +43,6 @@ input[type="file"] {
 #student-dshbrd-form {
     width: 30%;
 }
+.err-card {
+    width: 14rem;
+}

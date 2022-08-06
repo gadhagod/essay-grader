@@ -65,7 +65,7 @@ export default class Grader {
     }
 
     private static extractWords = (trimmedEssayBody: string) => trimmedEssayBody.match(/\b(\w+)'?(\w+)?\b/g) as string[];
-    private static isWord = (word: string) => dictionaryWords.includes(word);
+    private static isWord = (word: string) => dictionaryWords.includes(word) || parseInt(word);
     private static extractWordsAroundPeriods(trimmedEssayBody: string) {
         let lastWordsInSentences: string[] = [];
         let firstWordsInSentences: string[] = [];

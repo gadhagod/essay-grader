@@ -1,5 +1,7 @@
 const xhr = new XMLHttpRequest();
 
+let errorIndicator = new ErrorIndicator();
+
 function deleteEssay(essayId) {
     fetch(`/delete/${essayId}`, {
         method: "DELETE",
@@ -7,7 +9,7 @@ function deleteEssay(essayId) {
         document.querySelector(`#essay-row-${essayId}`).remove();
         if (document.querySelectorAll("tr").length === 1) {
             document.querySelector("table").remove();
-            document.querySelector("#no-essays-submitted").style.display = "";
+            errorIndicator.show();
         }
     }).catch((err) => {
         console.log(err)

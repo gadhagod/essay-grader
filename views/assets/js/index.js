@@ -1,16 +1,16 @@
 class ErrorIndicator {
-    #errorP;
-    constructor(indicatorElem) {
-        this.#errorP = indicatorElem || document.querySelector("#error-indicator");
+    errCard;
+    constructor(indicatorCard) {
+        this.errCard = indicatorCard || document.querySelector(".err-card");
     }
     setText(errorMsg) {
-        this.#errorP.innerText = errorMsg;
+        this.errCard.querySelector("strong").innerText = errorMsg;
     }
     show() {
-        this.#errorP.style.display = "";
+        this.errCard.style.display = "";
     }
     hide() {
-        this.#errorP.style.display = "none";
+        this.errCard.style.display = "none";
     }
 }
 
@@ -52,6 +52,9 @@ class Themes {
         if (document.querySelector("#name-input-card")) {
             document.querySelector("#name-input-card").classList.remove("bg-secondary");
         }
+        if (document.querySelector(".err-card")) {
+            document.querySelector(".err-card").classList.add("bg-light");
+        }
         document.querySelector(".dropdown-menu").classList.remove("bg-secondary");
         localStorage.setItem("lightTheme", 1);
     }
@@ -71,6 +74,9 @@ class Themes {
         this.#toggleButton.classList.add("bi-sun");
         if (document.querySelector("#name-input-card")) {
             document.querySelector("#name-input-card").classList.add("bg-secondary");
+        }
+        if (document.querySelector(".err-card")) {
+            document.querySelector(".err-card").classList.remove("bg-light");
         }
         document.querySelector(".dropdown-menu").classList.add("bg-secondary");
         localStorage.setItem("lightTheme", 0);

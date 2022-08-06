@@ -6,7 +6,7 @@
         <%- include(`${base}/views/partials/nav.ejs`) %>
         <%- include(`${base}/views/partials/heading.ejs`, { title: "Teacher Dashboard" }) %>
         <center class="mt-5">
-            <strong class="text-center text-warning" id="no-essays-submitted" style="display: <%= essays.length === 0 ? "" : "none" %>">No essays submitted.</strong>
+            <%- include(`${base}/views/partials/error.ejs`, { classList: [], errorMessage: "No essays submitted", visible: essays.length === 0 }) %>
             <% if (essays.length !== 0) { %>
                 <table id="teacher-essay-list" class="table mt-5 mx-5">
                     <tr class="table-head">

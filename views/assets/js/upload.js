@@ -11,8 +11,14 @@ essayBodyFile.addEventListener("change", () => {
 
 document.querySelector("#submit-btn").addEventListener("click", () => {
     localStorage.setItem("studentName", document.querySelector("#name-input").value);
-    if (!document.querySelector("input").value.trim()) return errorIndicator.setText("Please enter your name.");
-    if (!document.querySelector("textarea").value.trim()) return errorIndicator.setText("Please enter your essay.");
+    if (!document.querySelector("input").value.trim()) {
+        errorIndicator.setText("Please enter your name");
+        return errorIndicator.show();
+    }
+    if (!document.querySelector("textarea").value.trim()) {
+        errorIndicator.setText("Please enter your essay");
+        return errorIndicator.show;
+    }
     document.querySelector("form").submit();
 });
 

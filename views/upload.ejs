@@ -20,7 +20,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
             <button class="btn btn-primary mt-4" id="submit-btn">Submit</button>
         </div>
         <center class="mt-5">
-            <strong id="error-indicator" class="text-center text-danger mt-5 h5"></strong>
+            <%- include(`${base}/views/partials/error.ejs`, { classList: [], errorMessage: "", visible: false }) %>
+            <!--<strong id="error-indicator" class="text-center text-danger mt-5 h5"></strong>-->
         </center>
     </body>
     <%- include(`${base}/views/partials/scripts.ejs`, { additionalFiles: ["upload.js"] }) %>

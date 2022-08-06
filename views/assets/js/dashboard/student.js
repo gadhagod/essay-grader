@@ -28,7 +28,7 @@ enterBtn.onclick = (storedStudentName, ignoreNoName) => {
     errorIndicator.hide();
     let studentName = nameInput.value.trim() || storedStudentName;
     if (!studentName) {
-        errorIndicator.setText("Please enter your name.");
+        errorIndicator.setText("Please enter your name");
         errorIndicator.show();
         return;
     }
@@ -38,7 +38,7 @@ enterBtn.onclick = (storedStudentName, ignoreNoName) => {
         let essays = await res.json();
         if (!essays.length) {
             if (!ignoreNoName) {
-                errorIndicator.setText("Student not found.");
+                errorIndicator.setText("Student not found");
                 errorIndicator.show();
             }
             localStorage.removeItem("studentName");

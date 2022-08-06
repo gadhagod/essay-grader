@@ -23,4 +23,3 @@
 ## TODO
 - [ ] Make student names title case and queries case-insensitive
 - [ ] Add back button to view page
-- [ ] Fix spelling mistake identification bugs (numbers, etc.)

@@ -61,3 +61,7 @@ input[type="file"] {
 .nav-item > a:hover {
     color: white;
 }
+.err-card {
+    background-color: rgb(190, 190, 190);
+    width: 14rem;
+}
