@@ -30,9 +30,10 @@ input[type="file"] {
 #dark-mode-btn {
     float: right;
 }
-.bi-moon, .bi-sun {
+.bi-moon {
     color: black;
     font-size: 2rem;
+    color: rgb(0, 86, 114)
 }
 .navbar-brand {
     cursor: pointer;
@@ -45,4 +46,5 @@ input[type="file"] {
 }
 .err-card {
     width: 14rem;
+    border: 3px dotted rgb(252, 201, 201);;
 }
