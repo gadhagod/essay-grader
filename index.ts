@@ -56,12 +56,7 @@ app.use("/assets", express.static(__dirname + "/views/assets"));
     });
 
     app.delete("/delete/:essayId", async (req, res) => {
-        await Essay.deleteOne({_id: req.params.essayId});
-        res.sendStatus(200);
-    });
-
-    app.delete("/delete/:essayId", async (req, res) => {
-        await Essay.deleteOne({_id: req.params.essayId});
+        await Essay.deleteOne({ _id: req.params.essayId });
         res.sendStatus(200);
     });
     
