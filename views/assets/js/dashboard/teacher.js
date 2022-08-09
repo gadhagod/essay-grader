@@ -1,11 +1,9 @@
-const xhr = new XMLHttpRequest();
-
 let errorIndicator = new ErrorIndicator();
 
 function deleteEssay(essayId) {
-    fetch(`/delete/${essayId}`, {
+    fetch(`/comments/${essayId}`, {
         method: "DELETE",
-    }).then((res) => {
+    }).then(() => {
         document.querySelector(`#essay-row-${essayId}`).remove();
         if (document.querySelectorAll("tr").length === 1) {
             document.querySelector("table").remove();

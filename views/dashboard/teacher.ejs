@@ -32,7 +32,7 @@
                                 <p><%= essays[i].creationTime.toLocaleString("en-US", { hour: "numeric", minute: "numeric", hour12: true }) %></p>
                             </td>
                             <td>
-                                <a href="/view/<%= essays[i]._id %>">
+                                <a href="/view/<%= essays[i]._id %>?admin=true">
                                     <button class="btn btn-primary">View</button>
                                 </a>   
                             </td>

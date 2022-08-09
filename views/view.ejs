@@ -13,7 +13,25 @@
             <blockquote>
                 <%- rawEssayBody.replace("\n", "<br>").replace("\r", "<br>") %>
             </blockquote>
-            <h2>Problems:</h2>
+            <% if (admin || comment) { %>
+                <h2 class="mt-4">Teacher Comments</h2>
+                <div id="comment-inp-group" class="input-group" style="display: none">
+                    <input id="comment-inp" type="text" class="form-control" placeholder="Enter comments" value="<%= comment %>" <%= comment ? "disabled" : "" %>></input>
+                    &nbsp;
+                    <div id="comment-buttons">
+                        <button id="submit-comment-btn" class="btn btn-success type="button">
+                            <i class="bi bi-check"></i>
+                        </button>
+                        <button id="edit-comment-btn" class="btn btn-primary" type="button">
+                            <i class="bi bi-pencil"></i>
+                        </button>
+                    </div>
+                </div>
+                <button id="add-comment-btn" class="btn btn-primary">
+                    <i class="bi bi-plus"></i>
+                </button>
+            <% } %>
+            <h2 class="mt-4">Problems:</h2>
             <ul>
             <% if(!grade.problems.hasValidLength){ %>
                 <li><b><span class="text-danger">-50%</span></b> Word count requirement of 500 - 1000 unfulfilled. Your essay has <%= grade.data.essayWords.length %> words.</li>
@@ -63,7 +81,7 @@
                 console.log(problems)
             </script>
             -->
-        </div>
+        </div> 
     </body>
-    <%- include(`${base}/views/partials/scripts.ejs`) %>
+    <%- include(`${base}/views/partials/scripts.ejs`, { additionalFiles: ["view.js"] }) %>
 </html>

@@ -123,7 +123,8 @@ export default class Grader {
                 essayWords: this.essayWords,
                 firstWordsInSentences: this.firstWordsInSentences,
                 lastWordsInSentences: this.lastWordsInSentences
-            }
+            },
+            comment: ""
         };
     }
 }

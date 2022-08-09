@@ -1,7 +1,6 @@
 #teacher-essay-list {
     width: 95%;
 }
-
 #student-essay-list > tr:not(:first-child) {
     border: 1px solid lightgray;
 }
@@ -47,4 +46,10 @@ input[type="file"] {
 .err-card {
     width: 14rem;
     border: 3px dotted rgb(252, 201, 201);;
+}
+.bi-plus, .bi-check, .bi-pencil {
+    font-size: 2rem;
+}
+#comment-inp {
+    height: 3rem;
 }

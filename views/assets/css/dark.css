@@ -44,7 +44,7 @@ input[type="file"] {
 .navbar-brand {
     cursor: pointer;
 }
-#name-input, #essay-body-input {
+#name-input, #essay-body-input, #comment-inp {
     color: white;
 }
 #dark-mode-btn {
@@ -66,4 +66,10 @@ input[type="file"] {
     background-color: rgb(190, 190, 190);
     width: 14rem;
     border: 3px solid rgb(245, 159, 159);
+}
+.bi-plus, .bi-check, .bi-pencil {
+    font-size: 2rem;
+}
+#comment-inp {
+    height: 3rem;
 }

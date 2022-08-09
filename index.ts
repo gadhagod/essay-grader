@@ -18,7 +18,7 @@ app.use("/assets", express.static(__dirname + "/views/assets"));
     await mongoose.connect('mongodb://localhost:27017/essays');
 
     app.get("/", async (_req, res) => {
-        res.render("dashboard/teacher.ejs", { essays: await Essay.find() });
+        res.redirect("/dashboard/teacher");
     });
 
     app.get("/dashboard/student", async (_req, res) => {
@@ -32,9 +32,10 @@ app.use("/assets", express.static(__dirname + "/views/assets"));
     app.get("/view/:essayId", async (req, res) => {
         try {
             let essayData = await Essay.findOne({ _id: req.params.essayId }) as object;
-            if (essayData) res.render("viewOne.ejs", Object.assign(
+            if (essayData) res.render("view.ejs", Object.assign(
                 essayData, 
-                { toTitleCase: (str: string) => str.toLowerCase().split(" ").map((word) => (word.charAt(0).toUpperCase() + word.slice(1))).join(" ") }
+                { toTitleCase: (str: string) => str.toLowerCase().split(" ").map((word) => (word.charAt(0).toUpperCase() + word.slice(1))).join(" ") },
+                { admin: req.query.admin || false }
             ));
             else res.sendStatus(404);
         } catch (err) {
