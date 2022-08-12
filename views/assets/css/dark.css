@@ -66,8 +66,16 @@ input[type="file"] {
     width: 14rem;
     border: 3px solid rgb(245, 159, 159);
 }
-.bi-plus, .bi-check, .bi-pencil {
+.bi-plus, .bi-check, .bi-pencil, .bi-trash {
     font-size: 2rem;
+}
+.bi-github {
+    text-decoration: none;
+    font-size: 2rem;
+    color: white
+}
+.bi-github:hover {
+    -webkit-text-stroke: 1px black;
 }
 #comment-inp {
     height: 3rem;

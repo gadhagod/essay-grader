@@ -33,7 +33,7 @@ enterBtn.onclick = (storedStudentName, ignoreNoName) => {
         return;
     }
     fetch(`/api/essays?${new URLSearchParams({ studentName: studentName })}`, { method: "GET" }).then(async res => {
-        essayTable.style.display = "none";
+        hideElem(essayTable);
         resetTable();
         let essays = await res.json();
         if (!essays.length) {
@@ -42,13 +42,12 @@ enterBtn.onclick = (storedStudentName, ignoreNoName) => {
                 errorIndicator.show();
             }
             localStorage.removeItem("studentName");
-            beforeLogin.style.display = "";
-            afterLogin.style.display = "none";
+            showElem(beforeLogin);
+            hideElem(afterLogin);
             return;
         };
-        afterLogin.style.display = "";
-        beforeLogin.style.display = "none";
-        beforeLogin.style.display = "none";
+        showElem(afterLogin);
+        hideElem(beforeLogin)
         localStorage.setItem("studentName", studentName);
         document.getElementById("student-name-display").innerText = studentName;
         essays.forEach(essay => {
@@ -70,10 +69,10 @@ enterBtn.onclick = (storedStudentName, ignoreNoName) => {
             ));
             essayTable.appendChild(row);
         });
-        essayTable.style.display = "";
+        showElem(essayTable);
     }).catch((err) => {
         console.log(err);
-        essayTable.style.display = "none";
+        hideElem(essayTable);
         errorIndicator.setText("An error occurred");
         errorIndicator.show();
     });
@@ -81,15 +80,14 @@ enterBtn.onclick = (storedStudentName, ignoreNoName) => {
 
 logoutBtn.onclick = () => {
     localStorage.removeItem("studentName");
-    afterLogin.style.display = "none";
-    beforeLogin.style.display = "";
+    hideElem(afterLogin);
+    showElem(beforeLogin);
 };
 
 let studentName = localStorage.getItem("studentName");
 if (studentName) {
-    console.log("hi")
     enterBtn.onclick(studentName, true);
 } else {
-    afterLogin.style.display = "none";
-    beforeLogin.style.display = "";
+    hideElem(afterLogin);
+    showElem(beforeLogin);
 }

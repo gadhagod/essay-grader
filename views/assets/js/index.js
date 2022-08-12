@@ -1,3 +1,11 @@
+function showElem(elem) {
+    elem.style.display = "";
+}
+
+function hideElem(elem) {
+    elem.style.display = "none";
+}
+
 class ErrorIndicator {
     errCard;
     constructor(indicatorCard) {
@@ -7,10 +15,10 @@ class ErrorIndicator {
         this.errCard.querySelector("strong").innerText = errorMsg;
     }
     show() {
-        this.errCard.style.display = "";
+        showElem(this.errCard);
     }
     hide() {
-        this.errCard.style.display = "none";
+        hideElem(this.errCard);
     }
 }
 
@@ -19,7 +27,7 @@ class Themes {
     #toggleButton;
 
     constructor(startWithLightTheme) {
-        this.#toggleButton = document.querySelector(".bi");
+        this.#toggleButton = document.querySelector(".bi-sun, .bi-moon");
         this.#lightTheme = startWithLightTheme ?? !startWithLightTheme;
         if (this.#lightTheme) {
             this.#setToLight();
