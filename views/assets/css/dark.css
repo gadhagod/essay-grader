@@ -1,7 +1,6 @@
 #teacher-essay-list {
-    width: 95%;
+    width: 85%;
 }
-
 #student-essay-list > tr:not(:first-child) {
     border: 1px solid lightgray;
 }
