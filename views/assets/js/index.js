@@ -45,10 +45,9 @@ class Themes {
             document.querySelector(".table-head").classList.remove("bg-secondary");
         }
         document.querySelectorAll(".form-control").forEach((elem) => {
-            if (elem.disabled) {
-                elem.style.background = "";
-            } else {
+            if (!elem.disabled) {
                 elem.classList.remove("bg-dark");
+                document.querySelectorAll(".form-control")[0].style.background = "";
             }
         });
         this.#toggleButton.classList.remove("bi-sun");
@@ -72,9 +71,7 @@ class Themes {
             document.querySelector(".table-head").classList.add("bg-secondary");
         }
         document.querySelectorAll(".form-control").forEach((elem) => {
-            if (elem.disabled) {
-                elem.style.background = "#3b3b3b";
-            } else {
+            if (!elem.disabled) {
                 elem.classList.add("bg-dark");
             }
         });

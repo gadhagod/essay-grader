@@ -72,3 +72,10 @@ input[type="file"] {
 #comment-inp {
     height: 3rem;
 }
+#comment-inp[disabled] {
+    background: #3b3b3b
+}
+#comment-inp:not([disabled]) {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-dark-rgb),var(--bs-bg-opacity))!important;
+}
