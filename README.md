@@ -1,7 +1,6 @@
 # Essay Grader
 
 ## Prompt
-
 > English teacher Mr. Mark Adams is tired of grading students' English papers, so he's proposed to us a new project. He wants us to put together a website where students can upload their essays and receive a grade by the automatic grader that uses the same algorithmic grading he uses. (To make this clear, there is no such teacher named Mr. Mark Adams, and this is not a real project)
 > - 1% off for nasty no-nos, including "very," "really," and any tense of get (like "got", "has been getting", etc.)
 > - 1% off for any spelling mistake (Mr. Adams makes extra sure to choose books with conventional spellings, so assume students won't use proper nouns that aren't in your spelling dictionary)
@@ -19,6 +18,10 @@
 > 5 (BONUS). Implement an administrative page for Mr. Adams (you can host this at localhost:2020/admin). This should show him the scores each student receives for the essay. Use MongoDB to store the grades. He's only concerned with the grades and doesn't care about the content of the essays.
 > Mr. Adams trusts his students, so you do not need to build any sort of authentication.
 > Try to accomplish at least two of these mini-parts.
+
+## Instructions
+1. `npm i`
+2. `npm start`
 
 ## TODO
 - [ ] Make student names title case and queries case-insensitive
