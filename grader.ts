@@ -1,3 +1,5 @@
+import { Essay } from "./models";
+import { compareTwoStrings as compare } from "string-similarity";
 import dictionaryWords from "./util/wordList";
 
 export default class Grader {
@@ -17,17 +19,28 @@ export default class Grader {
         [this.firstWordsInSentences, this.lastWordsInSentences] = Grader.extractWordsAroundPeriods(this.trimmedEssayBody);
     }
 
-    private getProblems() {
+    private async checkForPlagiarism() {
+        let otherEssays = await Essay.find();
+        for (let i = 0; i < otherEssays.length; i++) {
+            if (compare(otherEssays[i].rawEssayBody || "", this.rawEssayBody) >= 0.3) {
+                return otherEssays[i].name;
+            }
+        }
+    }
+
+    private async getProblems() {
         let noNos: number[] = [];
         let spellingErrors: number[] = [];
         let repeatedFirstWords: number[][] = [];
         let prepositions: number[] = [];
+        let plagiarism = await this.checkForPlagiarism();
         let problems = {
             hasValidLength: 499 < this.essayWords.length && 1001 > this.essayWords.length,
             noNos: noNos,
             spellingErrors: spellingErrors,
             repeatedFirstWords: repeatedFirstWords,
-            terminatingPrepositions: prepositions
+            terminatingPrepositions: prepositions,
+            plagiarism: plagiarism
         }
 
         for (let i = 0; i < this.essayWords.length; i++) {
@@ -91,14 +104,15 @@ export default class Grader {
         ];
     }
 
-    getGrade() {
-        let problems = this.getProblems();
-        let percentGrade = Math.max(100 
+    async getGrade() {
+        let problems = await this.getProblems();
+        let percentGrade = problems.plagiarism ? 0 : Math.max(100 
             - problems.noNos.length 
             - problems.spellingErrors.length 
             - 3 * problems.repeatedFirstWords.length 
             - 5 * problems.terminatingPrepositions.length
             - (problems.hasValidLength ? 0 : 50), -200);
+
         let letterGrade = ((percentGrade: number) => {
             if (percentGrade >= 96.5) return "A+";
             else if (percentGrade >= 92.5) return "A";

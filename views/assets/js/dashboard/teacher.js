@@ -1,7 +1,7 @@
 let errorIndicator = new ErrorIndicator();
 
 function deleteEssay(essayId) {
-    fetch(`/comments/${essayId}`, {
+    fetch(`/delete/${essayId}`, {
         method: "DELETE",
     }).then(() => {
         document.querySelector(`#essay-row-${essayId}`).remove();
@@ -10,7 +10,7 @@ function deleteEssay(essayId) {
             errorIndicator.show();
         }
     }).catch((err) => {
-        console.log(err)
-        alert("An error occurred")
+        console.log(err);
+        alert("An error occurred");
     });
 }

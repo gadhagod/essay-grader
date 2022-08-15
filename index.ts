@@ -48,7 +48,7 @@ app.use("/assets", express.static(__dirname + "/views/assets"));
     });
     
     app.post("/upload", async (req, res) => {
-        let grade = (new Grader(req.body.rawEssayBody)).getGrade();
+        let grade = await (new Grader(req.body.rawEssayBody)).getGrade();
         let essayData = Object.assign(req.body, { creationTime: new Date(), grade: grade });
         let essay = new Essay(essayData);
         await essay.save();

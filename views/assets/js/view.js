@@ -22,6 +22,7 @@ if (admin) {
         } else {
             hideElem(deleteCommentBtn);
         }
+        commentInp.select();
     });
     
     if (getComment()) {
