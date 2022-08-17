@@ -22,7 +22,7 @@ app.use("/assets", express.static(__dirname + "/views/assets"));
     });
 
     app.get("/dashboard/student", async (_req, res) => {
-        res.render("dashboard/student.ejs");
+        res.render("dashboard/student.ejs", { students: new Set((await Essay.find()).map(essay => essay.name)) });
     });
 
     app.get("/dashboard/teacher", async (_req, res) => {

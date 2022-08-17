@@ -55,9 +55,6 @@ input[type="file"] {
     font-size: 2rem;
     color: black
 }
-.bi-github:hover {
-    -webkit-text-stroke: 0.5px blue;
-}
 #comment-inp {
     height: 3rem;
 }

@@ -5,12 +5,17 @@
     <body>
         <%- include(`${base}/views/partials/nav.ejs`) %>
         <%- include(`${base}/views/partials/heading.ejs`, { title: "Student Dashboard" }) %>
+        <datalist id="studentNames">
+            <% for (name of students) { %>
+                <option value="<%= name %>"></option>
+            <% } %> 
+        </datalist>
         <center>
             <div id="before-login" style="display: none;">
                 <div id="student-dshbrd-form" class="mt-4 card">
                     <div id="name-input-card" class="card-body">
                         <label for="name-input"><b>Name</b></label>
-                        <input id="name-input" class="form-control mt-1" name="name" placeholder="Enter name">
+                        <input id="name-input" class="form-control mt-1" name="name" placeholder="Enter name" list="studentNames">
                         <a id="name-submit" class="btn btn-primary mt-3">Enter</a>
                     </div>
                 </div>

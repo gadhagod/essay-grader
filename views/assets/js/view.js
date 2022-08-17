@@ -72,7 +72,7 @@ if (admin) {
             alert("An error occurred");
         });
     });
-} else if (commentInp.value) {
+} else if (commentInp && commentInp.value) {
     hideElem(document.querySelector("#comment-buttons"));
     hideElem(addCommentBtn);
     showElem(commentInpGroup);

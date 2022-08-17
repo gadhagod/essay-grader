@@ -14,12 +14,17 @@
 - [x] BONUS: Detect plagiarism. Any paper that is a copy of a previous one gets a big fat zero as the grade, regardless of what other errors were made. The grade of the original remains the same. Some students are sneaky and may change a word or two, so your detection should be robust.
 - [x] The grade starts at 100%, and percentage points are subtracted until the student gets a -200%. At that point Mr. Adams takes mercy and stops subtracting points. Thus -200% is the minimum grade, and you should never give a grade any lower
 
-### Procudure
+### Procedure
 - [x] Create a function that given the essay as a string, gives a grade using at least two of Mr. Adam's rules (props if you can implement all).
 - [x] Use Express/Koa and Node.js to create a webserver that handles POST requests to http://localhost:2020/. The server should reply with a grade (if you don't do part 1 you can return 50% for all essays; that's a healthy compromise between Mr. Adams and his students).
 - [x] In addition to replying with a grade, give the user a list of reasons why points got taken off (so, an explanation for each point taken off).
 - [x] Make a webpage with a text field for the student's name, their essay, and a submit button. Clicking the submit button should send a POST request somewhere. If you have coded the POST request, have the page show the score to the student.
 - [x] Implement an administrative page for Mr. Adams (you can host this at localhost:2020/admin). This should show him the scores each student receives for the essay. Use MongoDB to store the grades. He's only concerned with the grades and doesn't care about the content of the essays.
+
+### Additional Features
+- [x] Student dashboard where students can view all their previous essays.
+- [x] Way for students to see teacher comments.
+- [x] Dark/light mode.
 
 ## Testing Locally
 1. `npm i`

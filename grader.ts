@@ -142,9 +142,3 @@ export default class Grader {
         };
     }
 }
-/*
-let essay = new Grader(`
-Get I'm house Today is the anniversary potn of the publication of car's iconic poem “Stopping by Woods on a Snowy Evening,” a fact that spurred the Literary Hub office into a long conversation about their favorite poems, the most iconic poems written in English, and which poems we should all have already read (or at least be reading next). 
-I'm Turns out, despite frequent (false) claims that poetry is dead and/or irrelevant and/or boring, there are plenty of poems that have sunk deep into our collective consciousness as cultural icons. i'm (What makes a poem iconic? For our purposes here, it's primarily a matter of cultural ubiquity, though unimpeachable excellence helps any case.) So for those of you who were not present for our epic office argument, I have listed some of them here. returns the number with the lowest value. My mommy told me. Hai guys. I am writing an essay resultr. What are you doing. Hai poop. My mommy of.`);
-console.log(essay.getGrade());
-*/

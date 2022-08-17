@@ -17,7 +17,7 @@ document.querySelector("#submit-btn").addEventListener("click", () => {
     }
     if (!document.querySelector("textarea").value.trim()) {
         errorIndicator.setText("Please enter your essay");
-        return errorIndicator.show;
+        return errorIndicator.show();
     }
     document.querySelector("form").submit();
 });
