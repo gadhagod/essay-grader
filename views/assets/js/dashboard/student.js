@@ -33,12 +33,13 @@ enterBtn.onclick = (storedStudentName, ignoreNoName) => {
         return;
     }
     fetch(`/api/essays?${new URLSearchParams({ studentName: studentName })}`, { method: "GET" }).then(async res => {
+        let data = await res.json();
         hideElem(essayTable);
         resetTable();
-        let essays = await res.json();
+        let essays = data.essays;
         if (!essays.length) {
             if (!ignoreNoName) {
-                errorIndicator.setText("Student not found");
+                errorIndicator.setText(data.possibility ? `Did you mean "${data.possibility}"?` : "Student not found");
                 errorIndicator.show();
             }
             localStorage.removeItem("studentName");
