@@ -14,7 +14,7 @@ export default class Grader {
 
     constructor(rawEssayBody: string) {
         this.rawEssayBody = rawEssayBody;
-        this.trimmedEssayBody = rawEssayBody.toLowerCase().replace(/\(|\)/g, "").replace(/(\r\n|\n|\r)/gm, "").replace("?", ".").replace("!", "");
+        this.trimmedEssayBody = rawEssayBody.toLowerCase().replace("’", "'").replace(/\(|\)/g, "").replace(/(\r\n|\n|\r)/gm, "").replace("?", ".").replace("!", ".");
         this.essayWords = Grader.extractWords(this.trimmedEssayBody);
         [this.firstWordsInSentences, this.lastWordsInSentences] = Grader.extractWordsAroundPeriods(this.trimmedEssayBody);
     }
@@ -22,7 +22,7 @@ export default class Grader {
     private async checkForPlagiarism() {
         let otherEssays = await Essay.find();
         for (let i = 0; i < otherEssays.length; i++) {
-            if (compare(otherEssays[i].rawEssayBody || "", this.rawEssayBody) >= 0.3) {
+            if (compare(otherEssays[i].rawEssayBody || "", this.rawEssayBody) >= 0.8) {
                 return otherEssays[i].name;
             }
         }
